@@ -7,3 +7,7 @@ C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\Hu
 C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\bin\Debug\HuynhLamHuy_DH52300664.pdb
 C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\obj\Debug\HuynhLamHuy_DH52300664.exe
 C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\obj\Debug\HuynhLamHuy_DH52300664.pdb
+C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\obj\Debug\HuynhLamHuy_DH52300664.MainForm.resources
+C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Huy Huynh\OneDrive\Documents\HuynhLamHuy_DATH\HuynhLamHuy_DH52300664\HuynhLamHuy_DH52300664\obj\Debug\HuynhLam.1D292597.Up2Date
