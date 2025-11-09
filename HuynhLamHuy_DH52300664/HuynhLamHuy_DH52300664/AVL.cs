@@ -132,5 +132,71 @@ namespace HuynhLamHuy_DH52300664
             var json = JsonConvert.SerializeObject(list, Formatting.Indented);
             File.WriteAllText(path, json);
         }
+        // 🌳 Chiều cao cây
+        public int GetHeight()
+        {
+            return Height(Root);
+        }
+
+        // Đếm số node có 2 lá con
+        public int CountNodesWithTwoLeafChildren(AVLNode node)
+        {
+            if (node == null) return 0;
+
+            int count = 0;
+
+            if (node.Left != null && node.Right != null)
+            {
+                bool leftIsLeaf = (node.Left.Left == null && node.Left.Right == null);
+                bool rightIsLeaf = (node.Right.Left == null && node.Right.Right == null);
+
+                if (leftIsLeaf && rightIsLeaf)
+                    count++;
+            }
+
+            count += CountNodesWithTwoLeafChildren(node.Left);
+            count += CountNodesWithTwoLeafChildren(node.Right);
+
+            return count;
+        }
+
+
+        // 🔍 Tìm node nhỏ nhất
+        public AVLNode FindMin(AVLNode node)
+        {
+            if (node == null) return null;
+            while (node.Left != null)
+                node = node.Left;
+            return node;
+        }
+
+        // 🔎 Tìm node lớn nhất
+        public AVLNode FindMax(AVLNode node)
+        {
+            if (node == null) return null;
+            while (node.Right != null)
+                node = node.Right;
+            return node;
+        }
+
+        // 🔠 Tìm giá trị trong cây theo khóa
+        public AVLNode Search(AVLNode node, string key)
+        {
+            if (node == null) return null;
+            int cmp = string.Compare(key, node.Key, StringComparison.Ordinal);
+            if (cmp == 0) return node;
+            else if (cmp < 0) return Search(node.Left, key);
+            else return Search(node.Right, key);
+        }
+        // đếm lá
+        public int CountLeafNodes(AVLNode node)
+        {
+            if (node == null)
+                return 0;
+            if (node.Left == null && node.Right == null)
+                return 1;
+            return CountLeafNodes(node.Left) + CountLeafNodes(node.Right);
+        }
+
     }
 }

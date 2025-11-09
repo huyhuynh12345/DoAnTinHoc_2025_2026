@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\",
+  "WorkspaceRootPath": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|c:\\users\\huy huynh\\onedrive\\documents\\huynhlamhuy_dath3\\huynhlamhuy_dh52300664\\huynhlamhuy_dh52300664\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\readcsv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\readcsv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\readcsv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\avl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\avl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\avl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|c:\\users\\huy huynh\\onedrive\\documents\\huynhlamhuy_dath\\huynhlamhuy_dh52300664\\huynhlamhuy_dh52300664\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\huynhlamhuy_dh52300664\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8492A94F-BF8C-4B83-BF94-F43BBE520E56}|HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664.csproj|solutionrelative:huynhlamhuy_dh52300664\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -40,78 +40,73 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "AVL.cs",
-              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\AVL.cs",
+              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\AVL.cs",
               "RelativeDocumentMoniker": "HuynhLamHuy_DH52300664\\AVL.cs",
-              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\AVL.cs",
+              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\AVL.cs",
               "RelativeToolTip": "HuynhLamHuy_DH52300664\\AVL.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "ViewState": "AQIAALEAAAAAAAAAAAAAABAAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T04:11:55.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T04:11:55.032Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ReadCsv.cs",
-              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\ReadCsv.cs",
+              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\ReadCsv.cs",
               "RelativeDocumentMoniker": "HuynhLamHuy_DH52300664\\ReadCsv.cs",
-              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\ReadCsv.cs",
+              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\ReadCsv.cs",
               "RelativeToolTip": "HuynhLamHuy_DH52300664\\ReadCsv.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAADwv0MAAAAyAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAADwv0MAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T15:27:17.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T15:27:17.933Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.Designer.cs",
               "RelativeDocumentMoniker": "HuynhLamHuy_DH52300664\\MainForm.Designer.cs",
-              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.Designer.cs",
               "RelativeToolTip": "HuynhLamHuy_DH52300664\\MainForm.Designer.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAADwv0wAAAAlAAAA",
+              "ViewState": "AQIAAI8AAAAAAAAAAAAAAFMAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T15:19:39.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T15:19:39.395Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs",
               "RelativeDocumentMoniker": "HuynhLamHuy_DH52300664\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs",
               "RelativeToolTip": "HuynhLamHuy_DH52300664\\MainForm.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAAwEAAAAANAAAA",
+              "ViewState": "AQIAAMoBAAAAAAAAAAAwwN8BAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-24T15:16:58.322Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs",
               "RelativeDocumentMoniker": "HuynhLamHuy_DH52300664\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs [Design]",
+              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\MainForm.cs [Design]",
               "RelativeToolTip": "HuynhLamHuy_DH52300664\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T15:16:54.858Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-24T15:16:54.858Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\Program.cs",
               "RelativeDocumentMoniker": "HuynhLamHuy_DH52300664\\Program.cs",
-              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\Program.cs",
+              "ToolTip": "C:\\Users\\Huy Huynh\\OneDrive\\Documents\\HuynhLamHuy_DATH3\\HuynhLamHuy_DH52300664\\HuynhLamHuy_DH52300664\\Program.cs",
               "RelativeToolTip": "HuynhLamHuy_DH52300664\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAUAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T15:16:50.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T15:16:50.089Z"
             }
           ]
         }

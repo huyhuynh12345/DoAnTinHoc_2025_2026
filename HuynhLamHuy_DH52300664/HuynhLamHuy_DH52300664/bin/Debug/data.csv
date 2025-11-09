@@ -1,13 +1,13 @@
 Time,Date,Day of the week,CarCount,BikeCount,BusCount,TruckCount,Total,Traffic Situation
-12:00:00 AM,1,Sunday,14,0,0,34,48,normal
-12:15:00 AM,1,Sunday,17,5,0,23,45,normal
-12:30:00 AM,1,Sunday,19,1,1,18,39,normal
-12:45:00 AM,1,Sunday,15,5,1,12,33,low
-1:00:00 AM,1,Sunday,13,2,1,26,42,normal
-1:15:00 AM,1,Sunday,15,3,0,32,50,normal
-1:30:00 AM,1,Sunday,15,0,1,13,29,normal
-1:45:00 AM,1,Sunday,18,5,1,12,36,low
-2:00:00 AM,1,Sunday,17,1,0,29,47,normal
+12:00:00 AM,1,Sunday,14,0,0,34,5,normal
+12:15:00 AM,1,Sunday,17,5,0,23,36,normal
+12:30:00 AM,1,Sunday,19,1,1,18,48,normal
+12:45:00 AM,1,Sunday,15,5,1,12,9,low
+1:00:00 AM,1,Sunday,13,2,1,26,21,normal
+1:15:00 AM,1,Sunday,15,3,0,32,29,normal
+1:30:00 AM,1,Sunday,15,0,1,13,8,normal
+1:45:00 AM,1,Sunday,18,5,1,12,6,low
+2:00:00 AM,1,Sunday,17,1,0,29,1,normal
 2:15:00 AM,1,Sunday,10,4,0,19,33,normal
 2:30:00 AM,1,Sunday,15,0,0,18,33,normal
 2:45:00 AM,1,Sunday,11,0,0,35,46,normal
