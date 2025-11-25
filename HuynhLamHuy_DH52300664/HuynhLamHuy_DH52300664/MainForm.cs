@@ -22,6 +22,56 @@ namespace HuynhLamHuy_DH52300664
         {
             InitializeComponent();
         }
+        // Hàm lấy tất cả node theo tầng (hỗ trợ nhiều tầng)
+        private List<AVLNode> GetNodesAtLevel(AVLNode root, int targetLevel)
+        {
+            List<AVLNode> result = new List<AVLNode>();
+            if (root == null) return result;
+
+            Queue<(AVLNode node, int level)> q = new Queue<(AVLNode, int)>();
+            q.Enqueue((root, 0));
+
+            while (q.Count > 0)
+            {
+                var (node, level) = q.Dequeue();
+
+                if (level == targetLevel)
+                {
+                    result.Add(node);
+                }
+
+                if (node.Left != null) q.Enqueue((node.Left, level + 1));
+                if (node.Right != null) q.Enqueue((node.Right, level + 1));
+            }
+
+            return result;
+        }
+
+        private List<AVLNode> GetNodesByLevels(AVLNode root, IEnumerable<int> levels)
+        {
+            List<AVLNode> result = new List<AVLNode>();
+            if (root == null || levels == null) return result;
+
+            Queue<(AVLNode node, int level)> queue = new Queue<(AVLNode node, int level)>();
+            queue.Enqueue((root, 0));
+
+            HashSet<int> levelSet = new HashSet<int>(levels);
+
+            while (queue.Count > 0)
+            {
+                var (node, level) = queue.Dequeue();
+                if (levelSet.Contains(level))
+                    result.Add(node);
+
+                if (node.Left != null)
+                    queue.Enqueue((node.Left, level + 1));
+                if (node.Right != null)
+                    queue.Enqueue((node.Right, level + 1));
+            }
+
+            return result;
+        }
+
         // Hàm đọc CSV
         private List<string[]> ReadCsvFile(string path)
         {
@@ -74,7 +124,34 @@ namespace HuynhLamHuy_DH52300664
             FindValueWithDateTime(node.Left, columnIndex, target, results);
             FindValueWithDateTime(node.Right, columnIndex, target, results);
         }
+        // Tạo cây theo nút TopN
+        private AVLTree BuildAVLFromTopN()
+        {
+            if (topNRows.Count == 0)
+                return null;
 
+            int totalIndex = Array.FindIndex(currentHeader,
+                h => h.Trim().Equals("Total", StringComparison.OrdinalIgnoreCase));
+
+            if (totalIndex < 0)
+            {
+                MessageBox.Show("Không tìm thấy cột Total!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            AVLTree tree = new AVLTree();
+
+            for (int i = 0; i < topNRows.Count; i++)
+            {
+                string key = CreateKeyTotal(topNRows[i][totalIndex], i);
+                tree.Insert(key, topNRows[i]);
+            }
+            currentSortColumnIndex = totalIndex;
+
+            return tree;
+        }
+       
 
         private string ShowInputDialog(string text, string title)
         {
@@ -279,23 +356,18 @@ namespace HuynhLamHuy_DH52300664
             MessageBox.Show($" Đã sắp xếp theo {select} và lưu ra AVL_Output.json!", "Thành công",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (currentTree == null || currentHeader == null)
+            if (currentTree == null)
             {
-                MessageBox.Show(" Hãy chọn cột sắp xếp (ComboBox1) trước!", "Chưa có cây AVL",
+                MessageBox.Show("Hãy bấm Hiện N trước!", "Chưa có Top N",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string select = comboBox2.SelectedItem.ToString();
             AVLTree tree = currentTree;
+
 
             if (select == "Chiều cao cây")
             {
@@ -372,6 +444,272 @@ namespace HuynhLamHuy_DH52300664
                 MessageBox.Show($" Số node lá trong cây: {count}", "Kết quả",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else if (select == "duyệt lá")
+            {
+                var leaves = currentTree.GetLeafNodes();
+                if (leaves.Count == 0)
+                {
+                    MessageBox.Show("Không có node lá!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                DataTable dt = new DataTable();
+                foreach (var col in currentHeader)
+                    dt.Columns.Add(col);
+
+                foreach (var leaf in leaves)
+                    dt.Rows.Add(leaf.Data);
+
+                dgv1.DataSource = dt;  // Quan trọng: gán DataSource mới
+                MessageBox.Show($"Có {leaves.Count} node lá!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (select == "Duyệt lá chẵn")
+            {
+                if (currentTree == null)
+                {
+                    MessageBox.Show("Hãy bấm Hiện N trước!", "Chưa có cây",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                List<AVLNode> leaves = currentTree.GetLeafNodes();
+                List<string[]> evenLeafRows = new List<string[]>();
+
+                foreach (var leaf in leaves)
+                {
+                    if (int.TryParse(leaf.Data[currentSortColumnIndex], out int val))
+                    {
+                        if (val % 2 == 0)
+                            evenLeafRows.Add(leaf.Data);
+                    }
+                }
+
+                if (evenLeafRows.Count == 0)
+                {
+                    MessageBox.Show("Không có lá chẵn!", "Kết quả",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Hiển thị DGV
+                DataTable dt = new DataTable();
+                foreach (var col in currentHeader)
+                    dt.Columns.Add(col);
+
+                foreach (var row in evenLeafRows)
+                    dt.Rows.Add(row);
+
+                dgv1.DataSource = dt;
+            }
+            else if (select == "Duyệt lá lẻ")
+            {
+                if (currentTree == null)
+                {
+                    MessageBox.Show("Hãy bấm Hiện N trước!", "Chưa có cây",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                List<AVLNode> leaves = currentTree.GetLeafNodes();
+                List<string[]> oddLeafRows = new List<string[]>();
+
+                foreach (var leaf in leaves)
+                {
+                    if (int.TryParse(leaf.Data[currentSortColumnIndex], out int val))
+                    {
+                        if (val % 2 != 0)
+                            oddLeafRows.Add(leaf.Data);
+                    }
+                }
+
+                if (oddLeafRows.Count == 0)
+                {
+                    MessageBox.Show("Không có lá lẻ!", "Kết quả",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Hiển thị DGV
+                DataTable dt = new DataTable();
+                foreach (var col in currentHeader)
+                    dt.Columns.Add(col);
+
+                foreach (var row in oddLeafRows)
+                    dt.Rows.Add(row);
+
+                dgv1.DataSource = dt;
+            }
+
+            else if (select == "tổng các lá")
+            {
+                if (currentSortColumnIndex < 0)
+                {
+                    MessageBox.Show("Không tìm thấy cột Total!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int sum = currentTree.SumOddLeafTotals(currentSortColumnIndex) + currentTree.SumEvenLeafTotals(currentSortColumnIndex);
+                MessageBox.Show($"Tổng các giá trị Total ở node lá = {sum}", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (select == "tổng các lá lẻ")
+            {
+                if (currentSortColumnIndex < 0)
+                {
+                    MessageBox.Show("Không tìm thấy cột Total!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int sum = currentTree.SumOddLeafTotals(currentSortColumnIndex);
+                MessageBox.Show($"Tổng các giá trị Total LẺ ở node lá = {sum}", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else if (select == "tổng các lá chẵn")
+            {
+                if (currentSortColumnIndex < 0)
+                {
+                    MessageBox.Show("Không tìm thấy cột Total!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int sum = currentTree.SumEvenLeafTotals(currentSortColumnIndex);
+                MessageBox.Show($"Tổng các giá trị Total CHẴN ở node lá = {sum}", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (select == "duyệt cây")
+            {
+                if (currentTree == null)
+                {
+                    MessageBox.Show("Cây chưa được tạo từ Top N!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Hàm duyệt cây theo BFS để giữ thứ tự left -> right
+                List<AVLNode> nodes = new List<AVLNode>();
+                Queue<AVLNode> queue = new Queue<AVLNode>();
+                if (currentTree.Root != null)
+                    queue.Enqueue(currentTree.Root);
+
+                while (queue.Count > 0)
+                {
+                    AVLNode node = queue.Dequeue();
+                    nodes.Add(node);
+
+                    if (node.Left != null) queue.Enqueue(node.Left);
+                    if (node.Right != null) queue.Enqueue(node.Right);
+                }
+
+                if (nodes.Count == 0)
+                {
+                    MessageBox.Show("Cây rỗng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Hiển thị dữ liệu node lên DataGridView
+                DataTable dt = new DataTable();
+                foreach (var col in currentHeader)
+                    dt.Columns.Add(col);
+
+                foreach (var node in nodes)
+                    dt.Rows.Add(node.Data);
+
+                dgv1.DataSource = null;
+                dgv1.DataSource = dt;
+
+                MessageBox.Show($"Đã duyệt {nodes.Count} node theo node -> left -> right!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else if (select == "tổng tầng")
+            {
+                if (currentTree == null)
+                {
+                    MessageBox.Show("Hãy bấm Hiện N trước!", "Chưa có cây",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string input = Interaction.InputBox("Nhập tầng muốn tính tổng (root = 0):",
+                                                    "Tổng theo tầng", "0");
+
+                if (!int.TryParse(input, out int level) || level < 0)
+                {
+                    MessageBox.Show("Tầng không hợp lệ!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                List<AVLNode> nodes = GetNodesAtLevel(currentTree.Root, level);
+
+                if (nodes.Count == 0)
+                {
+                    MessageBox.Show($"Không có node nào ở tầng {level}!",
+                        "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                int totalIndex = Array.FindIndex(currentHeader,h => h.Trim().Equals("Total", StringComparison.OrdinalIgnoreCase));
+
+                if (totalIndex < 0)
+                {
+                    MessageBox.Show("Không tìm thấy cột Total!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int sum = 0;
+                foreach (var node in nodes)
+                {
+                    if (int.TryParse(node.Data[totalIndex], out int val))
+                        sum += val;
+                }
+
+                MessageBox.Show($"Tổng Total tại tầng {level} = {sum}",
+                    "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else if (select == "duyệt tầng")
+            {
+                if (currentTree == null)
+                {
+                    MessageBox.Show("Hãy bấm Hiện N trước!", "Chưa có cây",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string input = Interaction.InputBox("Nhập tầng muốn duyệt (ví dụ: 0 hoặc 1,2,3):", "Duyệt tầng K", "0");
+                if (string.IsNullOrWhiteSpace(input)) return;
+
+                string[] parts = input.Split(',');
+                HashSet<int> levels = new HashSet<int>();
+                foreach (var p in parts)
+                    if (int.TryParse(p.Trim(), out int level) && level >= 0)
+                        levels.Add(level);
+
+                if (levels.Count == 0)
+                {
+                    MessageBox.Show("Tầng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // Lấy node theo tầng trả về AVLNode
+                var nodes = GetNodesByLevels(currentTree.Root, levels);
+
+                if (nodes.Count == 0)
+                {
+                    MessageBox.Show($"Không có node nào ở các tầng {string.Join(", ", levels)}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                // Hiển thị dữ liệu node nếu muốn
+                DataTable dt = new DataTable();
+                foreach (var col in currentHeader)
+                    dt.Columns.Add(col);
+
+                foreach (var node in nodes)
+                    dt.Rows.Add(node.Data);
+
+                dgv1.DataSource = null;
+                dgv1.DataSource = dt;
+
+                MessageBox.Show($"Hiển thị {nodes.Count} node ở các tầng: {string.Join(", ", levels)}!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
 
         }
         private void btnTopN_Click(object sender, EventArgs e)
@@ -413,67 +751,11 @@ namespace HuynhLamHuy_DH52300664
                 dt.Rows.Add(row);
 
             dgv1.DataSource = dt;
+            currentTree = BuildAVLFromTopN();
             MessageBox.Show($" Đã hiển thị {topNRows.Count} dòng đầu tiên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void btnDuyet_Click(object sender, EventArgs e)
-        {
-            if (topNRows.Count == 0)
-            {
-                MessageBox.Show(" Hãy xuất Top N trước!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+        
 
-            // Tìm index cột Total
-            int totalIndex = Array.FindIndex(currentHeader, h => h.Trim().Equals("Total", StringComparison.OrdinalIgnoreCase));
-            if (totalIndex < 0)
-            {
-                MessageBox.Show(" Không tìm thấy cột Total!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Tạo cây AVL từ topNRows theo Total
-            currentTree = new AVLTree();
-            for (int i = 0; i < topNRows.Count; i++)
-            {
-                string key = CreateKeyTotal(topNRows[i][totalIndex], i);
-                currentTree.Insert(key, topNRows[i]);
-            }
-
-            string input = Interaction.InputBox("Nhập tầng muốn duyệt (root=0):", "Duyệt tầng K", "0");
-            if (!int.TryParse(input, out int level) || level < 0)
-            {
-                MessageBox.Show(" Tầng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Lấy node theo tầng
-            List<(AVLNode node, int level)> nodesWithLevel = new List<(AVLNode, int)>();
-            InOrderWithLevel(currentTree.Root, 0, nodesWithLevel);
-
-            List<string[]> result = new List<string[]>();
-            foreach (var (node, nodeLevel) in nodesWithLevel)
-            {
-                if (nodeLevel == level)
-                    result.Add(node.Data);
-            }
-
-            if (result.Count == 0)
-            {
-                MessageBox.Show($" Không có node nào ở tầng {level}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            // Hiển thị kết quả
-            DataTable dt = new DataTable();
-            foreach (var col in currentHeader)
-                dt.Columns.Add(col);
-
-            foreach (var row in result)
-                dt.Rows.Add(row);
-
-            dgv1.DataSource = dt;
-            MessageBox.Show($" Hiển thị {result.Count} node ở tầng {level}!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
     }
 
 

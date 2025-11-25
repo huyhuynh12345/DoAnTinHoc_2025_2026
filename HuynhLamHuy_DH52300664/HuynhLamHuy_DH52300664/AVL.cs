@@ -197,6 +197,49 @@ namespace HuynhLamHuy_DH52300664
                 return 1;
             return CountLeafNodes(node.Left) + CountLeafNodes(node.Right);
         }
+        // Lấy tất cả node lá
+        public List<AVLNode> GetLeafNodes()
+        {
+            List<AVLNode> leaves = new List<AVLNode>();
+            CollectLeaves(Root, leaves);
+            return leaves;
+        }
+
+        private void CollectLeaves(AVLNode node, List<AVLNode> leaves)
+        {
+            if (node == null) return;
+            if (node.Left == null && node.Right == null)
+            {
+                leaves.Add(node);
+                return;
+            }
+            CollectLeaves(node.Left, leaves);
+            CollectLeaves(node.Right, leaves);
+        }
+
+        public int SumOddLeafTotals(int totalIndex)
+        {
+            int sum = 0;
+            foreach (var leaf in GetLeafNodes())
+            {
+                if (int.TryParse(leaf.Data[totalIndex], out int val) && val % 2 != 0)
+                    sum += val;
+            }
+            return sum;
+        }
+
+        public int SumEvenLeafTotals(int totalIndex)
+        {
+            int sum = 0;
+            foreach (var leaf in GetLeafNodes())
+            {
+                if (int.TryParse(leaf.Data[totalIndex], out int val) && val % 2 == 0)
+                    sum += val;
+            }
+            return sum;
+        }
+        
+
 
     }
 }
