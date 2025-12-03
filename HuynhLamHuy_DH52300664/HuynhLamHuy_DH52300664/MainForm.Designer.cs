@@ -25,6 +25,8 @@ namespace HuynhLamHuy_DH52300664
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.btnTopN = new System.Windows.Forms.Button();
+            this.btnTaoCayNguyenThuy = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@ namespace HuynhLamHuy_DH52300664
             "BikeCount",
             "CarCount",
             "DayTime"});
-            this.comboBox1.Location = new System.Drawing.Point(443, 34);
+            this.comboBox1.Location = new System.Drawing.Point(295, 32);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(153, 37);
             this.comboBox1.TabIndex = 3;
@@ -62,7 +64,7 @@ namespace HuynhLamHuy_DH52300664
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(329, 37);
+            this.label1.Location = new System.Drawing.Point(181, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 28);
             this.label1.TabIndex = 4;
@@ -71,14 +73,14 @@ namespace HuynhLamHuy_DH52300664
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1101, 44);
+            this.label2.Location = new System.Drawing.Point(629, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 5;
             // 
             // comboBox2
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
@@ -97,7 +99,7 @@ namespace HuynhLamHuy_DH52300664
             "duyệt cây",
             "duyệt tầng",
             "tổng tầng"});
-            this.comboBox2.Location = new System.Drawing.Point(1153, 34);
+            this.comboBox2.Location = new System.Drawing.Point(876, 29);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(237, 36);
             this.comboBox2.TabIndex = 6;
@@ -110,19 +112,19 @@ namespace HuynhLamHuy_DH52300664
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(22, 88);
+            this.dgv1.Location = new System.Drawing.Point(22, 97);
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
             this.dgv1.RowHeadersWidth = 62;
-            this.dgv1.Size = new System.Drawing.Size(1368, 500);
+            this.dgv1.Size = new System.Drawing.Size(1748, 689);
             this.dgv1.TabIndex = 1;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1000, 37);
+            this.label3.Location = new System.Drawing.Point(719, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 29);
             this.label3.TabIndex = 8;
@@ -130,9 +132,9 @@ namespace HuynhLamHuy_DH52300664
             // 
             // btnTopN
             // 
-            this.btnTopN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTopN.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnTopN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTopN.Location = new System.Drawing.Point(699, 30);
+            this.btnTopN.Location = new System.Drawing.Point(480, 22);
             this.btnTopN.Name = "btnTopN";
             this.btnTopN.Size = new System.Drawing.Size(219, 45);
             this.btnTopN.TabIndex = 9;
@@ -140,11 +142,41 @@ namespace HuynhLamHuy_DH52300664
             this.btnTopN.UseVisualStyleBackColor = true;
             this.btnTopN.Click += new System.EventHandler(this.btnTopN_Click);
             // 
+            // btnTaoCayNguyenThuy
+            // 
+            this.btnTaoCayNguyenThuy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnTaoCayNguyenThuy.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoCayNguyenThuy.Location = new System.Drawing.Point(1126, 23);
+            this.btnTaoCayNguyenThuy.Name = "btnTaoCayNguyenThuy";
+            this.btnTaoCayNguyenThuy.Size = new System.Drawing.Size(276, 45);
+            this.btnTaoCayNguyenThuy.TabIndex = 10;
+            this.btnTaoCayNguyenThuy.Text = "Tạo cây tinh khuyểt";
+            this.btnTaoCayNguyenThuy.UseVisualStyleBackColor = true;
+            this.btnTaoCayNguyenThuy.Click += new System.EventHandler(this.btnTaoCayNguyenThuy_Click);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Tìm giá trị trùng",
+            "Tìm số trùng nhiều nhất",
+            "Tìm số trùng ít nhất",
+            "Liệt kê tất cả giá trị trùng"});
+            this.comboBox3.Location = new System.Drawing.Point(1471, 24);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(240, 38);
+            this.comboBox3.TabIndex = 11;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 600);
+            this.ClientSize = new System.Drawing.Size(1804, 789);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.btnTaoCayNguyenThuy);
             this.Controls.Add(this.btnTopN);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -168,5 +200,7 @@ namespace HuynhLamHuy_DH52300664
         private DataGridView dgv1;
         private Label label3;
         private Button btnTopN;
+        private Button btnTaoCayNguyenThuy;
+        private ComboBox comboBox3;
     }
 }

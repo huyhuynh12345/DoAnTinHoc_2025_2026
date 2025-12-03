@@ -18,7 +18,7 @@
     "BikeCount": "5",
     "BusCount": "0",
     "TruckCount": "23",
-    "Total": "36",
+    "Total": "131",
     "Traffic Situation": "normal"
   },
   {
@@ -29,7 +29,7 @@
     "BikeCount": "1",
     "BusCount": "1",
     "TruckCount": "18",
-    "Total": "48",
+    "Total": "117",
     "Traffic Situation": "normal"
   },
   {
@@ -40,7 +40,7 @@
     "BikeCount": "5",
     "BusCount": "1",
     "TruckCount": "12",
-    "Total": "9",
+    "Total": "126",
     "Traffic Situation": "low"
   },
   {
@@ -51,7 +51,7 @@
     "BikeCount": "2",
     "BusCount": "1",
     "TruckCount": "26",
-    "Total": "21",
+    "Total": "33",
     "Traffic Situation": "normal"
   },
   {
@@ -62,7 +62,7 @@
     "BikeCount": "3",
     "BusCount": "0",
     "TruckCount": "32",
-    "Total": "29",
+    "Total": "59",
     "Traffic Situation": "normal"
   },
   {
@@ -73,7 +73,7 @@
     "BikeCount": "0",
     "BusCount": "1",
     "TruckCount": "13",
-    "Total": "8",
+    "Total": "71",
     "Traffic Situation": "normal"
   },
   {
@@ -84,7 +84,7 @@
     "BikeCount": "5",
     "BusCount": "1",
     "TruckCount": "12",
-    "Total": "6",
+    "Total": "33",
     "Traffic Situation": "low"
   },
   {

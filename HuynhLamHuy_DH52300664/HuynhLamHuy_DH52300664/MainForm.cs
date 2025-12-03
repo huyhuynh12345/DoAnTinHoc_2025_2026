@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using HuynhLamHuy_DH52300664;
 using Microsoft.VisualBasic;
@@ -18,10 +19,96 @@ namespace HuynhLamHuy_DH52300664
         private AVLTree currentTree;
         private string[] currentHeader;
         private int currentSortColumnIndex = -1;
+        private AVLTree primitiveTree;               // Cây không có giá trị trùng
+        private List<string[]> duplicateList = new List<string[]>();   // Danh sách lưu trùng
+        private Dictionary<int, List<string[]>> duplicateMap = new Dictionary<int, List<string[]>>();
+
         public MainForm()
         {
             InitializeComponent();
         }
+        private void XuLy_TimGiaTriTrung()
+        {
+            string input = Interaction.InputBox("Nhập giá trị Total cần tìm trùng:",
+                                                "Tìm giá trị trùng", "");
+
+            if (!int.TryParse(input, out int val))
+            {
+                MessageBox.Show("Giá trị không hợp lệ!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!duplicateMap.ContainsKey(val))
+            {
+                MessageBox.Show($"Không có phần tử nào trùng với {val}.",
+                    "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            ShowRowsOnGrid(duplicateMap[val]);
+        }
+
+        private void ShowRowsOnGrid(List<string[]> rows)
+        {
+            DataTable dt = new DataTable();
+            foreach (var col in currentHeader)
+                dt.Columns.Add(col);
+
+            foreach (var row in rows)
+                dt.Rows.Add(row);
+
+            dgv1.DataSource = dt;
+        }
+
+        private void XuLy_LietKeTatCa()
+        {
+            DataTable dt = new DataTable();
+            foreach (var col in currentHeader)
+                dt.Columns.Add(col);
+
+            foreach (var pair in duplicateMap)
+            {
+                foreach (var row in pair.Value)
+                    dt.Rows.Add(row);
+            }
+
+            dgv1.DataSource = dt;
+
+            MessageBox.Show("Đã liệt kê tất cả giá trị trùng!",
+                "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void XuLy_TimSoTrungItNhat()
+        {
+            int minCount = duplicateMap.Values.Min(list => list.Count);
+
+            var result = duplicateMap
+                .Where(kvp => kvp.Value.Count == minCount)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            string msg = "Giá trị trùng ít nhất:\n";
+            foreach (var item in result)
+                msg += $"- Giá trị {item.Key} xuất hiện {item.Value.Count} lần\n";
+
+            MessageBox.Show(msg, "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void XuLy_TimSoTrungNhieuNhat()
+        {
+            int maxCount = duplicateMap.Values.Max(list => list.Count);
+
+            var result = duplicateMap
+                .Where(kvp => kvp.Value.Count == maxCount)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            string msg = "Giá trị trùng nhiều nhất:\n";
+            foreach (var item in result)
+                msg += $"- Giá trị {item.Key} xuất hiện {item.Value.Count} lần\n";
+
+            MessageBox.Show(msg, "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         // Hàm lấy tất cả node theo tầng (hỗ trợ nhiều tầng)
         private List<AVLNode> GetNodesAtLevel(AVLNode root, int targetLevel)
         {
@@ -754,8 +841,103 @@ namespace HuynhLamHuy_DH52300664
             currentTree = BuildAVLFromTopN();
             MessageBox.Show($" Đã hiển thị {topNRows.Count} dòng đầu tiên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        
 
+        private void btnTaoCayNguyenThuy_Click(object sender, EventArgs e)
+        {
+            if (topNRows.Count == 0)
+            {
+                MessageBox.Show("Hãy bấm Hiện N trước!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int totalIndex = Array.FindIndex(currentHeader,
+                h => h.Trim().Equals("Total", StringComparison.OrdinalIgnoreCase));
+
+            if (totalIndex < 0)
+            {
+                MessageBox.Show("Không tìm thấy cột Total!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            primitiveTree = new AVLTree();
+            duplicateList.Clear();
+            duplicateMap.Clear();   // ⚠️ Quan trọng – reset map trùng
+
+            HashSet<int> seen = new HashSet<int>();
+
+            for (int i = 0; i < topNRows.Count; i++)
+            {
+                if (!int.TryParse(topNRows[i][totalIndex], out int val))
+                    continue;
+
+                if (!seen.Contains(val))
+                {
+                    // Giá trị mới → đưa vào cây
+                    seen.Add(val);
+                    primitiveTree.Insert(val.ToString(), topNRows[i]);
+                }
+                else
+                {
+                    // Giá trị trùng → đưa vào danh sách liên kết
+                    duplicateList.Add(topNRows[i]);
+
+                    // Đồng thời lưu vào duplicateMap
+                    if (!duplicateMap.ContainsKey(val))
+                        duplicateMap[val] = new List<string[]>();
+
+                    duplicateMap[val].Add(topNRows[i]);
+                }
+            }
+
+            MessageBox.Show(
+                $"Tạo cây nguyên thủy thành công!\n" +
+                $"- Số phần tử duy nhất: {seen.Count}\n" +
+                $"- Số phần tử trùng: {duplicateList.Count}",
+                "Thành công",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            List<string[]> inorderList = new List<string[]>();
+            primitiveTree.InOrder(primitiveTree.Root, inorderList);
+
+            DataTable dt = new DataTable();
+            foreach (var col in currentHeader)
+                dt.Columns.Add(col);
+
+            foreach (var row in inorderList)
+                dt.Rows.Add(row);
+
+            dgv1.DataSource = dt;
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (duplicateMap.Count == 0)
+            {
+                MessageBox.Show("không có giá trị trùng trong cây.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string select = comboBox3.SelectedItem.ToString();
+
+            if (select == "Tìm giá trị trùng")
+            {
+                XuLy_TimGiaTriTrung();
+            }
+            else if (select == "Tìm số trùng nhiều nhất")
+            {
+                XuLy_TimSoTrungNhieuNhat();
+            }
+            else if (select == "Tìm số trùng ít nhất")
+            {
+                XuLy_TimSoTrungItNhat();
+            }
+            else if (select == "Liệt kê tất cả giá trị trùng")
+            {
+                XuLy_LietKeTatCa();
+            }
+        }
     }
 
 
